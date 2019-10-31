@@ -5,24 +5,37 @@ import Router from 'next/router';
 import { Subscribe } from 'unstated';
 
 import AuthContainer from '../containers/authContainer'
-import LogIn from './LogIn';
+import CreateExamModal from '../components/molecules/CreateExamModal';
+
+Modal.setAppElement('#createExamModal')
 
 class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalIsOpen: false
+    };
+
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
+  }
+
 	render () {
 		return (
-			/* <Subscribe to={[AuthContainer]}>
-				{authState => {
-					this.authState = authState;
-					return (
-						<div>
-						</div>
-					)
-				}
-				}
-				<LogIn />
-			</Subscribe>
-			*/
-			<LogIn />
+      <div>
+        <button onClick={this.openModal}>Open Modal</button>
+        <CreateExamModal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+        />
+      </div>
 		)
 	}
 }
