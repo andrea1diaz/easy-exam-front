@@ -37,12 +37,12 @@ export const validateFirstName = value => {
 
 export const validateLastName = value => {
   // TODO: Explore util functions of validate.js
-  let lastName = '';
+  let lastName = "";
   if (value && !/^[\s]{0,20}$/.test(value)) {
     lastName = validate.capitalize(value.trim());
   }
   return validate(
-    { lastName },
+    { lastName: lastName },
     {
       lastName: {
         presence: true,
@@ -52,10 +52,19 @@ export const validateLastName = value => {
       }
     }
   );
-pattern: '[0-9]+'
+};
+
+export const validatePassword = value => {
+  return validate(
+    { password: value },
+    {
+      password: {
+        presence: true,
+        length: {
+          minimum: 1,
+          message: "La contraseña debe de tener, al menos, 6 caracteres"
         }
       }
     }
   );
 };
-
