@@ -7,6 +7,7 @@ import Input from '../atoms/Input';
 import Button from '../atoms/Button';
 
 import { LOGIN_MODE } from '../../utils/constants';
+import { validateEmail, validatePassword } from '../../validators';
 
 const Wrapper = styled.div`
 	position: absolute;
@@ -64,9 +65,12 @@ class LoginCard extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			mode: LOGIN_MODE,
 			email: '',
 			password: '',
+			registerields: {},
 		};
+
 	}
 
 	render() {
@@ -85,6 +89,13 @@ class LoginCard extends Component {
 						type="email"
 						value={email}
 						placeholder="email"
+						validator={v => {
+                    const r = validateEmail(v);
+                    this.setState(s => {
+                      return { ...s, continueAvailable: r === undefined };
+                    });
+                    return r !== undefined;
+                  }}
 						onChange={async v => {
 										await this.setState(s => {
 											return { ...s, email: v };
@@ -102,6 +113,13 @@ class LoginCard extends Component {
 						type="password"
 						value={password}
 						placeholder="password"
+						validator={v => {
+                    const r = validatePassword(v);
+                    this.setState(s => {
+                      return { ...s, continueAvailable: r === undefined };
+                    });
+                    return r !== undefined;
+                  }}
 						onChange={async v => {
 										await this.setState(s => {
 											return { ...s, password: v };
@@ -110,6 +128,11 @@ class LoginCard extends Component {
 											email: { email },
 											password: { password },
 										});
+						}}
+						onEnterPressed={final => {
+							if (onLogin) {
+								onLogin(final);
+							}
 						}}
 					/>
 					<ForgotPassword onClick={onForgotPassword}>
