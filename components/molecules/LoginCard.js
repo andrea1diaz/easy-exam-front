@@ -70,7 +70,6 @@ class LoginCard extends Component {
 			password: '',
 			registerields: {},
 		};
-
 	}
 
 	render() {
@@ -82,7 +81,7 @@ class LoginCard extends Component {
 
 		return (
 			<Wrapper isMobile={isMobile}>
-				<Title>Welcome back</Title>
+				<Title>Welcome back </Title>
 				<InputWrapper>
 					<Input
 						name="email"
@@ -130,8 +129,8 @@ class LoginCard extends Component {
 										});
 						}}
 						onEnterPressed={final => {
-							if (onLogin) {
-								onLogin(final);
+							if (onLogIn) {
+								onLogIn(final);
 							}
 						}}
 					/>

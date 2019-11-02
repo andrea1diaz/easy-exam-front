@@ -1,0 +1,254 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
+
+import Input from '../atoms/Input';
+import Button from '../atoms/Button';
+
+import { REGISTER_MODE } from '../../utils/constants';
+import {
+	validateEmail,
+	validatePassword,
+	validateFirstName,
+	validateLastName,
+} from '../../validators';
+
+const Wrapper = styled.div`
+	position absolute;
+	left: 15%;
+	top 29%;
+	font-weight: bold;
+`;
+
+const InputWrapper = styled.div`
+	padding: 0 0 45px 0;
+`;
+
+const ButtonWrapper = styled.div`
+	padding: 10px 0 0 0;
+`;
+
+const Title = styled.div`
+	font-size: 45px;
+	padding: 0 0 50px 0;
+
+	@media (max-width: 1200px) {
+		font-size: 25px;
+	}
+`;
+
+const LogIn = styled.div`
+	color: #969696;
+	text-align: left;
+	padding: 11px 0 0 5px;
+	font-size: 14px;
+	
+	@media (max-width: 1200px) {
+			color: white;
+		}
+`;
+
+class RegisterCard extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			mode: REGISTER_MODE,
+			firstName: '',
+			lastName: '',
+			email: '',
+			password: '',
+			inputsValidated: [false, false, false, false, false],
+			continueAvailable: false,
+			registerFields: {},
+		};
+	}
+
+	handleRegister = () => {
+		const { inputsValidated } = this.state;
+		const { onRegister } = this.props;
+
+		const auxContinueAvailable = inputsValidated.reduce(
+			(prev, cur) => {
+				return prev && cur;
+			},
+		);
+		console.log("entraa", auxContinueAvailable);
+		if (auxContinueAvailable) {
+			onRegister();
+		}
+	};
+
+	render() {
+		const {
+			email,
+			password,
+			firstName,
+			lastName,
+			onChangeFields,
+			} = this.props;
+
+		const {
+			inputsValidated,
+			firstName,
+			lastName,
+			email,
+			password,
+			} = this.state;
+
+		return (
+			<Wrapper>
+				<Title>Create Account </Title>
+				<InputWrapper>
+					<Input
+						name="firstName"
+						type="text"
+						value={firstName}
+						placeholder="name"
+						validator={v => {
+                    const r = validateFirstName(v);
+                    const auxInputsValidated = inputsValidated;
+                    auxInputsValidated[1] = r === undefined;
+                    this.setState(s => {
+                      return { ...s, inputsValidated: auxInputsValidated };
+                    });
+                    return r !== undefined;
+                  }}
+						onChange={async v => {
+                    await this.setState(s => {
+                      return { ...s, firstName: v };
+                    });
+                    onChangeFields({
+                      firstName,
+                      lastName,
+                      email,
+                      password,
+                    });
+                  }}
+					/>
+				</InputWrapper>
+				<InputWrapper>
+					<Input
+						name="lastName"
+						type="text"
+						value={lastName}
+						placeholder="last name"
+						validator={v => {
+                    const r = validateLastName(v);
+                    let auxInputsValidated = this.state.inputsValidated;
+                    auxInputsValidated[2] = r === undefined;
+                    this.setState(s => {
+                      return { ...s, inputsValidated: auxInputsValidated };
+                    });
+                    return r !== undefined;
+                  }}
+						onChange={v => {
+                    this.setState(s => {
+                      return { ...s, lastName: v };
+                    });
+                    onChangeFields({
+                      firstName: this.state.firstName,
+                      lastName: this.state.lastName,
+                      email: this.state.email,
+                      password: this.state.password
+                    });
+                  }}
+					/>				
+				</InputWrapper>
+				<InputWrapper>
+					<Input
+						name={"email"}
+						type={"email"}
+						value={this.state.email}
+						onChange={async v => {
+							await this.setState(s => {
+								return { ...s, email: v };
+							});
+							this.props.onChangeFields({
+								firstName: this.state.firstName,
+								lastName: this.state.lastName,
+								email: this.state.email,
+								password: this.state.password
+							});
+						}}
+						label={"Email"}
+						validator={v => {
+							const r = validateEmail(v);
+							let auxInputsValidated = this.state.inputsValidated;
+							auxInputsValidated[3] = r === undefined;
+							this.setState(s => {
+								return { ...s, inputsValidated: auxInputsValidated };
+							});
+							return r !== undefined;
+						}}
+						errorMessage={"Parece que el correo es inválido."}
+					/>
+				</InputWrapper>
+				<InputWrapper>
+					<Input
+						type={"password"}
+						name={"password"}
+						label={"Contraseña"}
+						placeholder={"Crea una contraseña"}
+						value={this.state.password}
+						onChange={v => {
+							this.setState(s => {
+								return { ...s, password: v };
+							});
+							this.props.onChangeFields({
+								firstName: this.state.firstName,
+								lastName: this.state.lastName,
+								email: this.state.email,
+								password: this.state.password
+							});
+						}}
+						validator={v => {
+							const r = validateIDPassword(v);
+							let auxInputsValidated = this.state.inputsValidated;
+							auxInputsValidated[4] = r === undefined;
+							this.setState(s => {
+								return { ...s, inputsValidated: auxInputsValidated };
+							});
+							return r !== undefined;
+						}}
+						onEnterPressed={final => {
+							if (this.props.onRegister) {
+								this.props.onRegister(final);
+							}
+						}}
+						errorMessage={
+							"Asegúrate que tu contraseña tenga 6 dígitos como mínimo."
+						}
+					/>
+				</InputWrapper>
+				<ButtonWrapper>
+					<Button
+						onClick={this.handleRegister}
+						color="#FEC85D"
+						fontColor="#FFFFFF"
+					>
+						REGISTER
+					</Button>
+					<LogIn onClick={goToLogin}>
+						Already have an account?
+						<span style={css`color: #FEC85D`}> Log In </span>
+					</LogIn>
+				</ButtonWrapper>
+			</Wrapper>
+		)
+	}
+}
+
+RegisterCard.defaultProps = {
+	onChangeFields: () => {},
+}
+
+RegisterCard.propTypes = {
+	isMobile: PropTypes.bool,
+	onChangeFields: PropTypes.func,
+	onRegister: PropTypes.func,
+	goToLogin: PropTypes.func,
+}
+
+export default RegisterCard;
+
