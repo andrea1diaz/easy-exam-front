@@ -6,6 +6,7 @@ import { Subscribe } from 'unstated';
 
 import AuthContainer from '../containers/authContainer'
 import LogIn from './LogIn';
+import SearchBar from '../components/molecules/SearchBar';
 
 class Index extends Component {
 	render () {
@@ -22,7 +23,7 @@ class Index extends Component {
 				<LogIn />
 			</Subscribe>
 			*/
-			<LogIn />
+			<SearchBar />
 		)
 	}
 }

@@ -8,9 +8,9 @@ const SVG = styled.svg`
 `;
 
 const Icon = props => {
-	const { color, size } = props;
+	const { color, size, viewBox } = props;
 	return (
-		<SVG fill = { color } height = { size } width = { size } viewBox = "0 0 32 32">
+		<SVG fill = { color } height = { size } width = { size } viewBox = {viewBox}>
 			{ props.children }
 		</SVG>
 	);
@@ -18,12 +18,14 @@ const Icon = props => {
 
 Icon.defaultProps = {
 	color: "#969696",
-	size: 24
+	size: 24,
+	viewBox: '0 0 32 32'
 };
 
 Icon.propTypes = {
 	color: PropTypes.string,
 	size: PropTypes.number,
+	viewBox: PropTypes.string,
 	children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]).isRequired
 };
 
