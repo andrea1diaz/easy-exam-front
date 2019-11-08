@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TopBar from '../organisms/TopBar';
 import BottomBar from '../organisms/BottomBar';
-// import IDVerticalBar from '../organisms/IDVerticalBar';
 import ConfirmDialog from '../atoms/ConfirmDialog';
 import { MAX_PAGE_TOP_TO_CHANGE_TOOLBAR } from '../../utils/constants';
 import styled from 'styled-components';
