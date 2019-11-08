@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
+import PropTypes from'prop-types';
 import styled from '@emotion/styled';
 import { Subscribe } from 'unstated';
 
@@ -7,7 +8,9 @@ import WaveOne from '../atoms/WaveOne';
 import LoginCard from '../molecules/LoginCard';
 import RegisterCard from '../molecules/RegisterCard';
 import AuthContainer from '../../containers/authContainer';
-import SuccessfulSpam from '../atom/SuccesfulSpam';
+import RecoveryPasswordDialog from '../molecules/RecoveryPasswordDialog';
+import SuccessfulSpam from '../atoms/SuccessfulSpam';
+import ErrorSpam from '../atoms/ErrorSpam';
 
 import {
 	loginRequest,
@@ -79,10 +82,10 @@ class LogIn extends Component {
 	register = async () => {
 		console.log ('On register function');
 		const data = {
-			firstName = this.state.firstName.trim(),
-			lastName = this.state.lastName.trim(),
-			email = this.state.emailR.trim().toLowerCase(),
-			password = this.state.passwordR,
+			firstName: this.state.firstName.trim(),
+			lastName: this.state.lastName.trim(),
+			email: this.state.emailR.trim().toLowerCase(),
+			password: this.state.passwordR,
 		};
 
 		try {
@@ -179,7 +182,7 @@ class LogIn extends Component {
 
 	render() {
 		return (
-			<Subscribe to={[Authcontainer]}>
+			<Subscribe to={[AuthContainer]}>
 				{(authState) => {
 					this.authState = authState;
 
@@ -305,7 +308,7 @@ class LogIn extends Component {
   }
 }
 
-Login.propTypes = {
+LogIn.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   opened: PropTypes.bool.isRequired,
   onLoginSuccess: PropTypes.func.isRequired,

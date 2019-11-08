@@ -81,10 +81,6 @@ class RegisterCard extends Component {
 
 	render() {
 		const {
-			email,
-			password,
-			firstName,
-			lastName,
 			onChangeFields,
 			} = this.props;
 
@@ -216,9 +212,8 @@ class RegisterCard extends Component {
 								this.props.onRegister(final);
 							}
 						}}
-						errorMessage={
+						errorMessage=
 							"Asegúrate que tu contraseña tenga 6 dígitos como mínimo."
-						}
 					/>
 				</InputWrapper>
 				<ButtonWrapper>
@@ -229,7 +224,7 @@ class RegisterCard extends Component {
 					>
 						REGISTER
 					</Button>
-					<LogIn onClick={goToLogin}>
+					<LogIn onClick={this.props.goToLogin}>
 						Already have an account?
 						<span style={css`color: #FEC85D`}> Log In </span>
 					</LogIn>
@@ -251,4 +246,3 @@ RegisterCard.propTypes = {
 }
 
 export default RegisterCard;
-
