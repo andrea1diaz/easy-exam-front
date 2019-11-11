@@ -12,68 +12,71 @@ import { LOGIN_MODE } from '../../utils/constants'
 
 const Wrapper = styled.div`
 	position: absolute;
-	font-weight: bold;
   width: 200px;
-  height: 200px;
-  border-radius: 3px;
+  height: 160px;
+  border-radius: 15px;
   border: 2px solid #EAEAEA;
 
-
-	@media (max-width: 1200px) {
-     
-		font-weight: 500;
-  }
-`
-
-const Footer = styled.div`
-  position: absolute;
-  bottom: 0;
-  background-color: #F9F9F9;
-  width: 100%;
-  height: 20%;
-  color: #7A7A7A;
-  padding: 3px 5px 3px 5px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 75% 25%;
 `
 
 const Header = styled.div`
-  width: 100%;
-  max_width: 100%;
   overflow: hidden;
-  height: 80%;
+  border-radius: 15px 15px 0px 0px;
   background-color: #F3F3F3;
+  justify-self: stretch;
+  align-self: stretch;
+`
+
+const Footer = styled.div`
+  background-color: #F9F9F9;
+  color: #7A7A7A;
+  padding: 3px 10px 3px 14px;
+  border-radius: 0px 0px 15px 15px;
+  justify-self: stretch;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 100%;
 `
 
 const FilePreview = styled.img`
-  padding: 25px 25px 0px 25px;
-  width: 80%;
-
+  justify-self: center;
+  align-self: center;
+	display: block;
+	width: -webkit-fill-available;
+  border-radius: 15px 15px 0px 0px;
+  border: 2px solid #EAEAEA;
+  margin: 12px 12px 0px 12px;
 `
 
-const Title = styled.b`
+const Title = styled.p`
+	font-weight: bold;
+	font-size: 9px;
+	text-overflow: ellipsis;
+	margin: 0;
+	overflow: hidden;
+	white-space: nowrap;
 `
 
 const EditTime = styled.p`
   margin: 0;
-`
-
-const IconFile = styled.img`
-  width: 20px;
-  height:20px;
-  display: inline-block;
-  float: left;
+	font-size: 8px;
 `
 
 const Text = styled.div`
-  display: inline-block;
-  float: left;
-  margin-left: 5px;
+  justify-self: stretch;
+  align-self: stretch;
+	margin: auto 0px auto 5px;
+	display: block;
 `
 
 const IconPoints = styled.img`
+  justify-self: center;
+  align-self: center;
   height: 20px;
-  display: inline-block;
-  float: left;
-  position: absolute;
   right: 13px;
   top: 9px;
 `
@@ -82,7 +85,7 @@ class ExamPreview extends Component {
   constructor (props) {
     super(props)
     this.name = {
-      name: 'archivo.exam'
+      name: 'very very very long exam name.exam'
     }
     this.date = {
       date: 'today'
@@ -108,18 +111,21 @@ class ExamPreview extends Component {
         </Header>
         <Footer>
           <FileIcon color='#4C87D2' style={{
-            height: '30px',
-            display: 'inline- block',
-            float: 'left'
-          }} />
+            height: '20px',
+            width: 'auto',
+            margin: 'auto',
+            display: 'block'
+          }} viewBox='0 0 21.527 27.399' />
           <Text>
             <Title>{name}</Title>
             <EditTime> Edited {date} </EditTime>
           </Text>
           <VerticalDots viewBox='0 0 6 26' style={{
-            fill: '#969696',
-            'z-index': '5'
-          }} />
+            width: '4',
+            height: '16',
+            margin: 'auto',
+            display: 'block'
+          }} innerStyle={{ 'fill': '#969696' }} />
         </Footer>
       </Wrapper>
 
