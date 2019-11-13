@@ -40,6 +40,10 @@ export const recoveryPasswordReset = (recoverData) => axios.post(
 export const getUserInfo = (token) => axios.get(`${baseUrl}/users/me`,
 	{ headers: { Authorization: `Bearer ${token}` } });
 
+export const getIfUserExistsByEmail = (email) => axios.post(
+	`${baseUrl}/auth/check-email`, { email },
+);
+
 export const fastRegister = (payload) => axios.post(`${baseUrl}/auth/create-account`, { ...payload });
 
 export const updateProfile = (payload, token) => axios.post(`${baseUrl}/users/me/update-profile`,

@@ -12,71 +12,68 @@ import { LOGIN_MODE } from '../../utils/constants'
 
 const Wrapper = styled.div`
 	position: absolute;
+	font-weight: bold;
   width: 200px;
-  height: 160px;
-  border-radius: 15px;
+  height: 200px;
+  border-radius: 3px;
   border: 2px solid #EAEAEA;
 
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 75% 25%;
-`
 
-const Header = styled.div`
-  overflow: hidden;
-  border-radius: 15px 15px 0px 0px;
-  background-color: #F3F3F3;
-  justify-self: stretch;
-  align-self: stretch;
+	@media (max-width: 1200px) {
+     
+		font-weight: 500;
+  }
 `
 
 const Footer = styled.div`
+  position: absolute;
+  bottom: 0;
   background-color: #F9F9F9;
+  width: 100%;
+  height: 20%;
   color: #7A7A7A;
-  padding: 3px 10px 3px 14px;
-  border-radius: 0px 0px 15px 15px;
-  justify-self: stretch;
-  align-self: stretch;
-  display: grid;
-  grid-template-columns: 10% 80% 10%;
-  grid-template-rows: 100%;
+  padding: 3px 5px 3px 5px;
+`
+
+const Header = styled.div`
+  width: 100%;
+  max_width: 100%;
+  overflow: hidden;
+  height: 80%;
+  background-color: #F3F3F3;
 `
 
 const FilePreview = styled.img`
-  justify-self: center;
-  align-self: center;
-	display: block;
-	width: -webkit-fill-available;
-  border-radius: 15px 15px 0px 0px;
-  border: 2px solid #EAEAEA;
-  margin: 12px 12px 0px 12px;
+  padding: 25px 25px 0px 25px;
+  width: 80%;
+
 `
 
-const Title = styled.p`
-	font-weight: bold;
-	font-size: 9px;
-	text-overflow: ellipsis;
-	margin: 0;
-	overflow: hidden;
-	white-space: nowrap;
+const Title = styled.b`
 `
 
 const EditTime = styled.p`
   margin: 0;
-	font-size: 8px;
+`
+
+const IconFile = styled.img`
+  width: 20px;
+  height:20px;
+  display: inline-block;
+  float: left;
 `
 
 const Text = styled.div`
-  justify-self: stretch;
-  align-self: stretch;
-	margin: auto 0px auto 5px;
-	display: block;
+  display: inline-block;
+  float: left;
+  margin-left: 5px;
 `
 
 const IconPoints = styled.img`
-  justify-self: center;
-  align-self: center;
   height: 20px;
+  display: inline-block;
+  float: left;
+  position: absolute;
   right: 13px;
   top: 9px;
 `
@@ -84,30 +81,45 @@ const IconPoints = styled.img`
 class ExamPreview extends Component {
   constructor (props) {
     super(props)
+    this.name = {
+      name: 'archivo.exam'
+    }
+    this.date = {
+      date: 'today'
+    }
   }
   render () {
+    const {
+      isMobile
+    } = this.props
+
+    const {
+      name
+    } = this.name
+
+    const {
+      date
+    } = this.date
+
     return (
-      <Wrapper isMobile={this.props.isMobile} >
+      <Wrapper isMobile={isMobile} >
         <Header>
-          <FilePreview src={this.props.img} />
+          <FilePreview src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH6ET6NSRLnGaWpWhAmWvlwEJJmZ-Jz8jPvddx-cq5cUyboaM&s' />
         </Header>
         <Footer>
           <FileIcon color='#4C87D2' style={{
-            height: '20px',
-            width: 'auto',
-            margin: 'auto',
-            display: 'block'
-          }} viewBox='0 0 21.527 27.399' />
+            height: '30px',
+            display: 'inline- block',
+            float: 'left'
+          }} />
           <Text>
-            <Title>{this.props.name}</Title>
-            <EditTime> Edited {this.props.date} </EditTime>
+            <Title>{name}</Title>
+            <EditTime> Edited {date} </EditTime>
           </Text>
           <VerticalDots viewBox='0 0 6 26' style={{
-            width: '4',
-            height: '16',
-            margin: 'auto',
-            display: 'block'
-          }} innerStyle={{ 'fill': '#969696' }} />
+            fill: '#969696',
+            'z-index': '5'
+          }} />
         </Footer>
       </Wrapper>
 

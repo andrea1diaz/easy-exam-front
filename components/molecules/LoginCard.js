@@ -72,6 +72,7 @@ class LoginCard extends Component {
     }
   }
 
+<<<<<<< HEAD
   render () {
     const {
       isMobile, onChangeFields, onLogin,
