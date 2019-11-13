@@ -7,33 +7,28 @@ import { Subscribe } from 'unstated';
 import AuthContainer from '../containers/authContainer'
 import CreateExamModal from '../components/molecules/CreateExamModal';
 
-Modal.setAppElement('#createExamModal')
 
 class Index extends Component {
   constructor() {
     super();
     this.state = {
       modalIsOpen: false
-    };
-
-    this.closeModal = this.closeModal.bind(this);
+    }
   }
 
-  openModal() {
-    this.setState({modalIsOpen: true});
-  }
-
-  closeModal() {
-    this.setState({modalIsOpen: false});
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    })
   }
 
 	render () {
 		return (
       <div>
-        <button onClick={this.openModal}>Open Modal</button>
+        <button onClick={this.toggleModal}>Open Modal</button>
         <CreateExamModal
           isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
+          onRequestClose={this.toggleModal}
         />
       </div>
 		)
