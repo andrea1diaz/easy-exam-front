@@ -75,7 +75,7 @@ class LoginCard extends Component {
 	render() {
 		const {
 			isMobile, onChangeFields, onLogin,
-			onForgotPassword, goToRegister,
+			onRecoveryPassword, goToRegister,
 		} = this.props;
 		const { email, password } = this.state;
 
@@ -134,7 +134,7 @@ class LoginCard extends Component {
 							}
 						}}
 					/>
-					<ForgotPassword onClick={onForgotPassword}>
+					<ForgotPassword onClick={onRecoveryPassword}>
 							Forgot your password?
 					</ForgotPassword>
 				</InputWrapper>
@@ -164,7 +164,7 @@ LoginCard.defaultProps = {
 LoginCard.propTypes = {
 	isMobile: PropTypes.bool,
 	onChangeFields: PropTypes.func,
-	onForgotPassword: PropTypes.func,
+	onRecoveryPassword: PropTypes.func,
 	onLogin: PropTypes.func,
 	goToRegister: PropTypes.func,
 };

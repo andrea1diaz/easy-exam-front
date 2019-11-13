@@ -134,6 +134,9 @@ class Index extends Component {
                             });
                           }}
                         >
+												<div>
+												hola
+												</div>
                         </BasicLayout>
                       )}
                     </Main>

@@ -12,6 +12,7 @@ import RecoveryPasswordDialog from '../molecules/RecoveryPasswordDialog';
 import SuccessfulSpam from '../atoms/SuccessfulSpam';
 import ErrorSpam from '../atoms/ErrorSpam';
 import getErrorFromError from '../../utils/FabricError';
+import Loading from '../atoms/Loading';
 
 import {
 	loginRequest,
@@ -38,6 +39,7 @@ class Auth extends Component {
 			lastName: '',
 			emailR: '',
 			passwordR: '',
+			loading: false,
 			haveError: false,
 			error: {},
 			activeLoginView: true,
@@ -45,6 +47,14 @@ class Auth extends Component {
 			currentStepExists: '',
 		};
 	}
+
+	toogleLoading = () => {
+    this.setState(s => {
+      return {
+        loading: !s.loading
+      };
+    });
+  };
 
 	logIn = async () => {
 		const data = { email: this.state.email.email, password: this.state.password.password };
@@ -195,6 +205,9 @@ class Auth extends Component {
 
 					return (
 						<Wrapper opened={opened}>
+						  <Loading active={this.props.loading} />
+              <Loading active={this.state.loading} />
+
 							<ErrorSpam
 								isMobile={this.props.isMobile}
 								active={this.state.haveError}
@@ -211,7 +224,7 @@ class Auth extends Component {
 								message={
 									this.state.error
 										? this.state.error.message
-										: 'what?'
+										: 'Dude lo hiciste'
 								}
 							/>
 							<RecoveryPasswordDialog
@@ -322,11 +335,8 @@ Auth.propTypes = {
   opened: PropTypes.bool.isRequired,
   onLoginSuccess: PropTypes.func.isRequired,
   onLoginFailed: PropTypes.func,
-  onForgotPassword: PropTypes.func,
   onCancel: PropTypes.func,
   loading: PropTypes.bool,
-  pathname: PropTypes.string.isRequired,
-  asPath: PropTypes.string
 };
 
 export default Auth;
