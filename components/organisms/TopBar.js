@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Toolbar from '../molecules/Toolbar';
+import ToolBar from '../molecules/ToolBar';
 import BackArrowIcon from '../atoms/BackArrowIcon';
 import GoBack from '../molecules/GoBack';
 
@@ -17,7 +17,7 @@ const TopBar = (props) => {
       : props.title;
 
   return (
-    <Toolbar
+    <ToolBar
       backgroundColor={props.backgroundColor}
       title={chooseTitle}
       onTapTitle={props.onTapTitle}
@@ -35,7 +35,7 @@ const TopBar = (props) => {
       withShadow={props.withShadow}
     >
 			<div> </div>
-		</Toolbar>
+		</ToolBar>
   );
 };
 
