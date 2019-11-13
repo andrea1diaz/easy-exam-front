@@ -125,7 +125,7 @@ class Input extends React.Component {
       value_ = formatter(value_, text);
     }
 
-    await this.setState({ text: value_ });
+    await this.setState({text: value_});
 
     if (!withError) {
       if (validator === undefined) {
@@ -148,7 +148,7 @@ class Input extends React.Component {
         };
       });
     }
-    let returnedValue = text;
+    let returnedValue = this.state.text;
     if (parser) {
       returnedValue = parser(returnedValue);
     }

@@ -5,27 +5,27 @@ import AuthContainer from '../containers/authContainer';
 
 const auth = new AuthContainer();
 
-axios.interceptors.response.use(
-  response => response,
-  async error => {
-    console.log('ERRORRRRRR ->', error, error.response);
-    const { status } = error.response;
-    if (status === UNAUTHORIZED) {
-      console.log('UNAUTHORIZED BRO');
-      await auth.logOut();
-    }
-    if (status === 428) {
-      await auth.setUserData(error.response.data.data.user);
-    }
-    return Promise.reject(error);
-  },
-);
+// axios.interceptors.response.use(
+//   response => response,
+//   async error => {
+//     console.log('ERRORRRRRR ->', error, error.response);
+//     const { status } = error.response;
+//     if (status === UNAUTHORIZED) {
+//       console.log('UNAUTHORIZED BRO');
+//       await auth.logOut();
+//     }
+//     if (status === 428) {
+//       await auth.setUserData(error.response.data.data.user);
+//     }
+//     return Promise.reject(error);
+//   },
+// );
 
 export const baseUrl = env.BASE_API;
 
 export const registerNewUser = (payload) => axios.post(`${baseUrl}/auth/register`, { ...payload });
 
-export const loginRequest = (data) => axios.post(`${baseUrl}/auth/login`, { ...data });
+export const loginRequest = (payload, headers) => axios.post(`${baseUrl}/auth/login`, payload, headers);
 
 export const loginComplete = (data, token) => axios.post(`${baseUrl}/auth/complete`,
     { ...data },
