@@ -37,12 +37,12 @@ export const validateFirstName = value => {
 
 export const validateLastName = (value) => {
   // TODO: Explore util functions of validate.js
-  let lastName = '';
+  let lastName = "";
   if (value && !/^[\s]{0,20}$/.test(value)) {
     lastName = validate.capitalize(value.trim());
   }
   return validate(
-    { lastName },
+    { lastName: lastName },
     {
       lastName: {
         presence: true,
@@ -54,7 +54,7 @@ export const validateLastName = (value) => {
   );
 };
 
-export const validatePassword = (value) => {
+export const validatePassword = value => {
   return validate(
     { password: value },
     {
