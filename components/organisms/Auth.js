@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from'prop-types';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Subscribe } from 'unstated';
 
@@ -11,6 +11,7 @@ import AuthContainer from '../../containers/authContainer';
 import RecoveryPasswordDialog from '../molecules/RecoveryPasswordDialog';
 import SuccessfulSpam from '../atoms/SuccessfulSpam';
 import ErrorSpam from '../atoms/ErrorSpam';
+import getErrorFromError from '../../utils/FabricError';
 
 import {
 	loginRequest,
@@ -24,10 +25,10 @@ const Wrapper = styled.div`
 	}
 `;
 
-const RECOVERY_ACCOUNT = "recovery_account";
-const MESSAGE_SUCCESSFULSPAM = "message_successfulspam";
+const RECOVERY_ACCOUNT = 'recovery_account';
+const MESSAGE_SUCCESSFULSPAM = 'message_successfulspam';
 
-class LogIn extends Component {
+class Auth extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -46,7 +47,7 @@ class LogIn extends Component {
 	}
 
 	logIn = async () => {
-		const data = { login: this.state.email, password: this.state.password };
+		const data = { login: this.state.email.email, password: this.state.password.password };
 		console.log('On login function');
 		console.log(data);
 
@@ -80,7 +81,6 @@ class LogIn extends Component {
 	};
 
 	register = async () => {
-		console.log ('On register function');
 		const data = {
 			firstName: this.state.firstName.trim(),
 			lastName: this.state.lastName.trim(),
@@ -204,7 +204,7 @@ class LogIn extends Component {
 								title={
 									this.state.error
 										? this.state.error.title
-										: 'Error, there is:wno error'
+										: 'Error, there is no error'
 								}
 								message={
 									this.state.error
@@ -315,7 +315,7 @@ class LogIn extends Component {
   }
 }
 
-LogIn.propTypes = {
+Auth.propTypes = {
   isMobile: PropTypes.bool.isRequired,
   opened: PropTypes.bool.isRequired,
   onLoginSuccess: PropTypes.func.isRequired,
@@ -327,4 +327,4 @@ LogIn.propTypes = {
   asPath: PropTypes.string
 };
 
-export default LogIn;
+export default Auth;

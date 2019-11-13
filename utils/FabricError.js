@@ -11,6 +11,9 @@ const getKeysOfObject = (obj) => {
 
 const getErrorFromError = (error) => {
   switch (typeof error) {
+		default:
+			return null;
+
     case "object":
       // console.log("!!!");
       if (error.response) {
