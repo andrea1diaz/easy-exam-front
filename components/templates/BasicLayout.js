@@ -41,24 +41,7 @@ class BasicLayout extends Component {
 	render() {
 		return (
 			<div>
-				<TopBar
-					title={this.props.title}
-					onTapTitle={this.props.onTapTitle}
-					withBack={this.props.withBack}
-					userData={this.props.userData}
-					withProfile
-					onClickPhoto={this.openConfirmDialog}
-					withShadow={this.state.pageYOffset > MAX_PAGE_TOP_TO_CHANGE_TOOLBAR}
-					withCart={true}
-				/>
-				<WrapperBody>{this.props.children}</WrapperBody>
-				<BottomBar
-					onLogout={this.props.onLogout}
-					isMobile={this.props.isMobile}
-					pathname={this.props.pathname}
-					userData={this.props.userData}
-					small={!this.props.isMobile}
-				/>
+			<WrapperBody>{this.props.children}</WrapperBody>
 			</div>
 		);
 	}

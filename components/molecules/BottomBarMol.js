@@ -96,7 +96,7 @@ const NamePart = styled.div`
 `;
 
 
-class BottomBar extends Component {
+class BottomBarMol extends Component {
   static defaultProps = {
     options: [],
     defaultSelected: "/",
@@ -160,7 +160,7 @@ class BottomBar extends Component {
   }
 }
 
-BottomBar.propTypes = {
+BottomBarMol.propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   defaultSelected: PropTypes.string,
   activeColor: PropTypes.string,
@@ -170,5 +170,4 @@ BottomBar.propTypes = {
   onOpenSubMenu: PropTypes.func,
 };
 
-export default BottomBar;
-
+export default BottomBarMol;

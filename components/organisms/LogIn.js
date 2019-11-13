@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import MediaQuery from 'react-responsive';
 import PropTypes from'prop-types';
 import styled from '@emotion/styled';
 import { Subscribe } from 'unstated';
 
 import WaveOne from '../atoms/WaveOne';
+import WaveTwo from '../atoms/WaveTwo';
 import LoginCard from '../molecules/LoginCard';
 import RegisterCard from '../molecules/RegisterCard';
 import AuthContainer from '../../containers/authContainer';
@@ -39,7 +39,7 @@ class LogIn extends Component {
 			passwordR: '',
 			haveError: false,
 			error: {},
-			activeLogInView: true,
+			activeLoginView: true,
 			recoveryPasswordDialogActive: false,
 			currentStepExists: '',
 		};
@@ -124,6 +124,9 @@ class LogIn extends Component {
 
 	getCurrentViewUser = () => {
 		switch (this.state.currentStepExists) {
+			default:
+				return null;
+
 			case RECOVERY_ACCOUNT:
 				return (
 					<RecoveryPasswordDialog
@@ -181,13 +184,15 @@ class LogIn extends Component {
   };
 
 	render() {
+		const { opened } = this.props;
+
 		return (
 			<Subscribe to={[AuthContainer]}>
 				{(authState) => {
 					this.authState = authState;
 
 					return (
-						<Wrapper opened={this.props.opened}>
+						<Wrapper opened={opened}>
 							<ErrorSpam
 								isMobile={this.props.isMobile}
 								active={this.state.haveError}
@@ -199,7 +204,7 @@ class LogIn extends Component {
 								title={
 									this.state.error
 										? this.state.error.title
-										: 'Error, there is no error'
+										: 'Error, there is:wno error'
 								}
 								message={
 									this.state.error
@@ -245,11 +250,10 @@ class LogIn extends Component {
                 }}
               />
 						{this.state.activeLoginView ? (
-							<Wrapper>
+							<div>
 								<WaveOne />
                 <LoginCard
                   isMobile={this.props.isMobile}
-                  image={this.props.imageLogin}
                   onChangeFields={fields => {
                     this.setState(s => {
                       return {
@@ -275,8 +279,10 @@ class LogIn extends Component {
                     });
                   }}
                 />
-							</Wrapper>
+							</div>
               ) : (
+								<div>
+								<WaveTwo />
                 <RegisterCard
                   onChangeFields={fields => {
                     this.setState(s => {
@@ -297,6 +303,7 @@ class LogIn extends Component {
                   }}
                   onCancel={this.props.onCancel}
                   />
+								</div>
               )}
 
               {this.getCurrentViewUser()}
@@ -314,8 +321,6 @@ LogIn.propTypes = {
   onLoginSuccess: PropTypes.func.isRequired,
   onLoginFailed: PropTypes.func,
   onForgotPassword: PropTypes.func,
-  imageLogin: PropTypes.string.isRequired,
-  imageRegister: PropTypes.string.isRequired,
   onCancel: PropTypes.func,
   loading: PropTypes.bool,
   pathname: PropTypes.string.isRequired,

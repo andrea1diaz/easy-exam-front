@@ -5,7 +5,7 @@ import { Subscribe } from 'unstated';
 
 import HomeIcon from '../atoms/HomeIcon';
 import ProfileIcon from '../atoms/ProfileIcon';
-import BottomBar from '../molecules/BottomBar';
+import BottomBarMol from '../molecules/BottomBarMol';
 import BottomSheet from '../atoms/BottomSheet';
 import BadgeNotification from './BadgeNotification';
 import ConfirmDialog from '../atoms/ConfirmDialog';
@@ -37,7 +37,7 @@ const SubMenuOptionName = styled.div`
   margin-left: 8px;
 `;
 
-class IDBottomBar extends Component {
+class BottomBar extends Component {
   state = {
     bottomSheetOpen: false,
     bottomSheetOptions: [],
@@ -62,17 +62,17 @@ class IDBottomBar extends Component {
         icon: <HomeIcon />,
         to: '/',
         name: 'Home',
-        headTitle: 'ID Pass',
-        title: 'ID Pass',
+        headTitle: ' Pass',
+        title: ' Pass',
         description: 'Ve a los mejores lugares y eventos',
         back: false
       },
-      
+
 			{
         icon: <ProfileIcon.js />,
         to: '/me',
         name: 'Perfil',
-        headTitle: 'ID Pass | Tu perfil',
+        headTitle: ' Pass | Tu perfil',
         title: 'Tu perfil',
         description: '',
         back: true
@@ -81,7 +81,7 @@ class IDBottomBar extends Component {
         icon: <BadgeNotification />,
         to: '/notifications',
         name: 'Notificaciones',
-        headTitle: 'ID Pass | Tus notificaciones',
+        headTitle: ' Pass | Tus notificaciones',
         title: 'Tus notificaciones',
         description: '',
         back: true
@@ -97,7 +97,7 @@ class IDBottomBar extends Component {
           this.authState = authState;
           return (
             <div>
-              <ConfirmDialog
+              /<ConfirmDialog
                 active={this.state.confirmDialogActive}
                 title={'Cerrar sesión'}
                 description={'Esta seguro que desea cerrar sesión'}
@@ -131,7 +131,7 @@ class IDBottomBar extends Component {
                   })}
                 </SubMenuOptionsContainer>
               </BottomSheet>
-              <BottomBar
+              <BottomBarMol
                 small={this.props.small}
                 options={this.getOptions(Boolean(authState.state.isAuth))}
                 defaultSelected={this.props.pathname}
@@ -155,15 +155,15 @@ class IDBottomBar extends Component {
   }
 }
 
-IDBottomBar.propTypes = {
+BottomBar.propTypes = {
   pathname: PropTypes.string.isRequired,
   small: PropTypes.bool,
   isMobile: PropTypes.bool,
   onLogout: PropTypes.func,
 };
 
-IDBottomBar.defaultProps = {
+BottomBar.defaultProps = {
   onLogout: () => {},
 };
 
-export default IDBottomBar;
+export default BottomBar;

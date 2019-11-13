@@ -43,7 +43,7 @@ class Index extends Component {
 
     try {
       return {
-        pathname,
+				pathname,
         dataError: '',
       };
     } catch (e) {
@@ -61,7 +61,7 @@ class Index extends Component {
 		this.state = {
 			activeShare: false,
 			shareDetails: {},
-			loginOpened: false,
+			loginOpened: true,
 			activePop: false,
 			loading: true,
 			loadingPopUpLogin: false,
@@ -76,7 +76,7 @@ class Index extends Component {
     this.setState(s => {
       return {
         ...s,
-        loading: false
+        loading: false,
       };
     });
   };
@@ -105,7 +105,6 @@ class Index extends Component {
                         this.setState(s => {
                           return { ...s, loadingPopUpLogin: true };
                         });
-                        await this.getLikes(authState.state.token);
                         this.setState(s => {
                           return {
                             ...s,
@@ -116,7 +115,6 @@ class Index extends Component {
                         });
                       }}
                     />
-
                     <Main activePop={this.state.activePop}>
                       {this.state.loading ? (
                         <LoadingBasicLayout />
@@ -135,7 +133,6 @@ class Index extends Component {
                             });
                           }}
                         >
-												<div> hola </div>
                         </BasicLayout>
                       )}
                     </Main>
