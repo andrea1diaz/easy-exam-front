@@ -1,7 +1,7 @@
 import ContentLoader from 'react-content-loader';
 import React from 'react';
 
-const LoadingIDBasicLayout = (props) => (
+const LoadingBasicLayout = (props) => (
   <ContentLoader
     height={850}
     width={400}
@@ -26,5 +26,5 @@ const LoadingIDBasicLayout = (props) => (
   </ContentLoader>
 );
 
-export default LoadingIDBasicLayout;
+export default LoadingBasicLayout;
 

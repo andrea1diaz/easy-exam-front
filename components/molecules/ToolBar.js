@@ -64,7 +64,7 @@ const Extra = styled.div`
   justify-content: flex-end;
 `;
 
-const Toolbar = (props) => {
+const ToolBar = (props) => {
   return (
     <Wrapper
       hidden={props.hidden}
@@ -88,7 +88,7 @@ const Toolbar = (props) => {
   );
 };
 
-Toolbar.propTypes = {
+ToolBar.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   activeIcon: PropTypes.element,
   onTapTitle: PropTypes.func,
@@ -99,8 +99,8 @@ Toolbar.propTypes = {
   withShadow: PropTypes.bool
 };
 
-Toolbar.defaultProps = {
+ToolBar.defaultProps = {
   title: 'EasyExam',
 };
-export default Toolbar;
+export default ToolBar;
 

@@ -17,8 +17,17 @@ import {
 const Wrapper = styled.div`
 	position absolute;
 	left: 15%;
-	top 29%;
+	top 21%;
 	font-weight: bold;
+	width: 28%;
+
+	@media (max-width: 1200px) {
+		left: 33%;
+		right: auto;
+		color white;
+		font-weight: 500;
+		width: 40%
+	}
 `;
 
 const InputWrapper = styled.div`
@@ -149,13 +158,14 @@ class RegisterCard extends Component {
                       password: this.state.password
                     });
                   }}
-					/>				
+					/>			
 				</InputWrapper>
 				<InputWrapper>
 					<Input
-						name={"email"}
-						type={"email"}
+						name="email"
+						type="email"
 						value={this.state.email}
+						placeholder="email"
 						onChange={async v => {
 							await this.setState(s => {
 								return { ...s, email: v };
@@ -167,7 +177,6 @@ class RegisterCard extends Component {
 								password: this.state.password
 							});
 						}}
-						label={"Email"}
 						validator={v => {
 							const r = validateEmail(v);
 							let auxInputsValidated = this.state.inputsValidated;
@@ -177,15 +186,13 @@ class RegisterCard extends Component {
 							});
 							return r !== undefined;
 						}}
-						errorMessage={"Parece que el correo es inválido."}
 					/>
 				</InputWrapper>
 				<InputWrapper>
 					<Input
-						type={"password"}
-						name={"password"}
-						label={"Contraseña"}
-						placeholder={"Crea una contraseña"}
+						type="password"
+						name="password"
+						placeholder="password"
 						value={this.state.password}
 						onChange={v => {
 							this.setState(s => {
@@ -199,7 +206,7 @@ class RegisterCard extends Component {
 							});
 						}}
 						validator={v => {
-							const r = validateIDPassword(v);
+							const r = validatePassword(v);
 							let auxInputsValidated = this.state.inputsValidated;
 							auxInputsValidated[4] = r === undefined;
 							this.setState(s => {
@@ -212,8 +219,6 @@ class RegisterCard extends Component {
 								this.props.onRegister(final);
 							}
 						}}
-						errorMessage=
-							"Asegúrate que tu contraseña tenga 6 dígitos como mínimo."
 					/>
 				</InputWrapper>
 				<ButtonWrapper>
@@ -221,12 +226,13 @@ class RegisterCard extends Component {
 						onClick={this.handleRegister}
 						color="#FEC85D"
 						fontColor="#FFFFFF"
+						style={{ padding: '18px 36%' }}
 					>
 						REGISTER
 					</Button>
 					<LogIn onClick={this.props.goToLogin}>
 						Already have an account?
-						<span style={css`color: #FEC85D`}> Log In </span>
+						<span style={{color:'#FEC85D'}}> Log In </span>
 					</LogIn>
 				</ButtonWrapper>
 			</Wrapper>

@@ -31,7 +31,7 @@ const INTRODUCING_PASSWORD = 'password';
 const LOGIN = 'login';
 const LOGGED_USER = 'session_exist';
 const RECOVERY_PASSWORD = 'recovery_password';
-const GET_IDENTIFICATION = 'get_identification';
+const GET_ENTIFICATION = 'get_identification';
 const SIMPLE_LOGIN = 'simple_login';
 const MESSAGE_SUCCESS_RECOVERY_PASSWORD = 'message_success_recovery_password';
 

@@ -9,6 +9,7 @@ const Wave = styled('svg')`
   transform-origin: left;
   position: fixed;
 	top: -125px;
+	left: -14%;
 `;
 
 const WaveOne = (props) => {

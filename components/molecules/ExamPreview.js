@@ -5,6 +5,8 @@ import { css } from '@emotion/core'
 
 import Input from '../atoms/Input'
 import Button from '../atoms/Button'
+import FileIcon from '../atoms/FileIcon'
+import VerticalDots from '../atoms/VerticalDots'
 
 import { LOGIN_MODE } from '../../utils/constants'
 
@@ -105,12 +107,19 @@ class ExamPreview extends Component {
           <FilePreview src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH6ET6NSRLnGaWpWhAmWvlwEJJmZ-Jz8jPvddx-cq5cUyboaM&s' />
         </Header>
         <Footer>
-          <IconFile src='http://icons.iconarchive.com/icons/zhoolego/material/256/Filetype-Docs-icon.png' />
+          <FileIcon color='#4C87D2' style={{
+            height: '30px',
+            display: 'inline- block',
+            float: 'left'
+          }} />
           <Text>
             <Title>{name}</Title>
             <EditTime> Edited {date} </EditTime>
           </Text>
-          <IconPoints src='http://cdn.onlinewebfonts.com/svg/download_190683.png' />
+          <VerticalDots viewBox='0 0 6 26' style={{
+            fill: '#969696',
+            'z-index': '5'
+          }} />
         </Footer>
       </Wrapper>
 
