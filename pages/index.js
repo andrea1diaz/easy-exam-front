@@ -7,7 +7,10 @@ import { Subscribe } from 'unstated';
 
 import LoadingBasicLayout from '../components/atoms/LoadingBasicLayout';
 import AuthContainer from '../containers/authContainer';
+import Dashboard from '../components/organisms/Dashboard';
 
+
+/*
 const BasicLayout = dynamic(
   () => import('../components/templates/BasicLayout'),
   {
@@ -144,6 +147,15 @@ class Index extends Component {
         }}
 			</Subscribe>
 		)
+	}
+}
+*/
+
+class Index extends Component {
+	render () {
+		return (
+			<Dashboard/>
+		);
 	}
 }
 

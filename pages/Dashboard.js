@@ -10,9 +10,12 @@ class Dashboard extends Component {
 	render () {
 		return (
 			<Wrapper>
+				<div>
+					<SearchBar/>
+				</div>
 			</Wrapper>
 		);
 	}
 }
 
-export default DashBoard;
+export default Dashboard;

@@ -17,7 +17,7 @@ const SearchBarWrapper = styled.div`
 	background: #FFFFFF;
 	height: 40px;
 	border-radius: 5px;
-	box-shadow: 1px 1px 10px #555;
+	box-shadow: 5px 4px 6px #E1E1EB;
 	vertical-align: middle;
 	position: relative;
 `;
