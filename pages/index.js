@@ -7,7 +7,7 @@ import { Subscribe } from 'unstated';
 
 import LoadingBasicLayout from '../components/atoms/LoadingBasicLayout';
 import AuthContainer from '../containers/authContainer';
-import getErrorFromError from "../utils/FabricError";
+import getErrorFromError from '../utils/FabricError';
 
 const BasicLayout = dynamic(
   () => import('../components/templates/BasicLayout'),

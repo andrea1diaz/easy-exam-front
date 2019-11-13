@@ -15,18 +15,14 @@ const getErrorFromError = (error) => {
       return null
 
     case 'object':
-      // console.log("!!!");
       if (error.response) {
         if (error.response.data) {
           const title =
-            error.response.data.message || 'Houston, tenemos un problema'
-          console.log(error.response.data.errors)
-          const keys = getKeysOfObject(error.response.data.errors)
-          console.log('KEYS: ', keys)
-          let message = (
+            error.response.data.message || 'Houston, tenemos un problema';
+					const keys = getKeysOfObject(error.response.data.errors);
+          const message = (
             <div>
               {keys.map(k => {
-                // console.log("k", k);
                 return (
                   <ul>
                     <li>{validate.capitalize(k)}</li>

@@ -47,7 +47,7 @@ class Auth extends Component {
 	}
 
 	logIn = async () => {
-    const data = {email: this.state.email.email, password: this.state.password.password};
+		const data = { email: this.state.email.email, password: this.state.password.password };
 		console.log('On login function');
 		console.log(data);
 
