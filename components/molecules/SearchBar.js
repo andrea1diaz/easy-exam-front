@@ -82,7 +82,7 @@ class SearchBar extends Component {
 							css= {css`height: 40px; border-left: 1px solid #CCC; position: absolute; right: 150px`}
 						/>
 						<span
-							css = {css`display: inline-block; margin-right: 10px; position: absolute; top: 13px; right: 55px;`}
+							css = {css`display: inline-block; margin-right: 10px; position: absolute; top: 13px; right: 55px; font-family: Helvetica`}
 						>
 							Name
 						</span>

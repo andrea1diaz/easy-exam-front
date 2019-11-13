@@ -32,13 +32,13 @@ class Dashboard extends Component {
 		return (
 			<Wrapper>
 				<div
-					css={css`width:95%; margin: 20px auto`}
+					css={css`width:95%; margin: 30px auto`}
 				>
 					<SearchBar/>
 				</div>
 
 				<Section
-					css={css`width:40%; height: 60vh; margin-left:2.5%`}
+					css={css`width:45%; height: 60vh; margin-left:2.5%`}
 				>
 					<div
 						css={css`width:100%; height: 50px`}
@@ -49,7 +49,7 @@ class Dashboard extends Component {
 				</Section>
 
 				<Section
-					css={css`width:40%; margin-left:2.5%`}
+					css={css`width:40%; height: 60vh; margin-left:4%`}
 				>
 					<div>
 						Questions
