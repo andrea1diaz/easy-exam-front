@@ -5,6 +5,35 @@ import MediaQuery from 'react-responsive';
 import dynamic from 'next/dynamic';
 import { Subscribe } from 'unstated';
 
+<<<<<<< HEAD
+import AuthContainer from '../containers/authContainer'
+import CreateExamModal from '../components/molecules/CreateExamModal';
+
+
+class Index extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalIsOpen: false
+    }
+  }
+
+  toggleModal = () => {
+    this.setState({
+      modalIsOpen: !this.state.modalIsOpen
+    })
+  }
+
+	render () {
+		return (
+      <div>
+        <button onClick={this.toggleModal}>Open Modal</button>
+        <CreateExamModal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.toggleModal}
+        />
+      </div>
+=======
 import LoadingBasicLayout from '../components/atoms/LoadingBasicLayout';
 import AuthContainer from '../containers/authContainer';
 
@@ -143,6 +172,7 @@ class Index extends Component {
           );
         }}
 			</Subscribe>
+>>>>>>> dev
 		)
 	}
 }
