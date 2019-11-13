@@ -5,7 +5,8 @@ import Router from 'next/router';
 import { Subscribe } from 'unstated';
 
 import AuthContainer from '../containers/authContainer'
-import LogIn from './LogIn';
+import LogIn from '../components/organisms/LogIn';
+//import LogIn from './LogIn';
 
 class Index extends Component {
 	render () {
