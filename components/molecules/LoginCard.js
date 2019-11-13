@@ -70,19 +70,18 @@ class LoginCard extends Component {
 			password: '',
 			registerields: {},
 		};
-
 	}
 
 	render() {
 		const {
 			isMobile, onChangeFields, onLogIn,
-			onForgotPassword, onSignUp,
+			onForgotPassword, goToRegister,
 		} = this.props;
 		const { email, password } = this.state;
 
 		return (
 			<Wrapper isMobile={isMobile}>
-				<Title>Welcome back</Title>
+				<Title>Welcome back </Title>
 				<InputWrapper>
 					<Input
 						name="email"
@@ -130,8 +129,8 @@ class LoginCard extends Component {
 										});
 						}}
 						onEnterPressed={final => {
-							if (onLogin) {
-								onLogin(final);
+							if (onLogIn) {
+								onLogIn(final);
 							}
 						}}
 					/>
@@ -147,7 +146,7 @@ class LoginCard extends Component {
 					>
 						LOGIN
 					</Button>
-					<SignUp onClick={onSignUp}>
+					<SignUp onClick={goToRegister}>
 							Don’t have an account?
 						<span css={css`color: #FD7576`}> Sign Up </span>
 					</SignUp>
@@ -167,7 +166,7 @@ LoginCard.propTypes = {
 	onChangeFields: PropTypes.func,
 	onForgotPassword: PropTypes.func,
 	onLogIn: PropTypes.func,
-	onSignUp: PropTypes.func,
+	goToRegister: PropTypes.func,
 };
 
 export default LoginCard;

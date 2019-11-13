@@ -546,7 +546,7 @@ Lockfile:
   "@babel/plugin-transform-modules-commonjs@^7.4.4":
     version "7.6.0"
     resolved "https://registry.yarnpkg.com/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.6.0.tgz#39dfe957de4420445f1fcf88b68a2e4aa4515486"
-    integrity sha512-Ma93Ix95PNSEngqomy5LSBMAQvYKVe3dy+JlVJSHEXZR5ASL9lQBedMiCyVtmTLraIDVRE3ZjTZvmXXD2Ozw3g==
+    integrity sha512-Ma93Ix95PNSEngqomy5LSBMAQvYKVe3dy+JlVJSHEXZR5ASL9lQBedMiCyVtmTLraVRE3ZjTZvmXXD2Ozw3g==
     dependencies:
       "@babel/helper-module-transforms" "^7.4.4"
       "@babel/helper-plugin-utils" "^7.0.0"
@@ -626,7 +626,7 @@ Lockfile:
   "@babel/plugin-transform-react-jsx-source@^7.0.0":
     version "7.5.0"
     resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-source/-/plugin-transform-react-jsx-source-7.5.0.tgz#583b10c49cf057e237085bcbd8cc960bd83bd96b"
-    integrity sha512-58Q+Jsy4IDCZx7kqEZuSDdam/1oW8OdDX8f+Loo6xyxdfg1yF0GE2XNJQSTZCaMol93+FBzpWiPEwtbMloAcPg==
+    integrity sha512-58Q+Jsy4CZx7kqEZuSDdam/1oW8OdDX8f+Loo6xyxdfg1yF0GE2XNJQSTZCaMol93+FBzpWiPEwtbMloAcPg==
     dependencies:
       "@babel/helper-plugin-utils" "^7.0.0"
       "@babel/plugin-syntax-jsx" "^7.2.0"
@@ -776,7 +776,7 @@ Lockfile:
   "@babel/preset-react@7.0.0":
     version "7.0.0"
     resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.0.0.tgz#e86b4b3d99433c7b3e9e91747e2653958bc6b3c0"
-    integrity sha512-oayxyPS4Zj+hF6Et11BwuBkmpgT/zMxyuZgFrMeZID6Hdh3dGlk4sHCAhdBCpuCKW2ppBfl2uCCetlrUIJRY3w==
+    integrity sha512-oayxyPS4Zj+hF6Et11BwuBkmpgT/zMxyuZgFrMeZ6Hdh3dGlk4sHCAhdBCpuCKW2ppBfl2uCCetlrUIJRY3w==
     dependencies:
       "@babel/helper-plugin-utils" "^7.0.0"
       "@babel/plugin-transform-react-display-name" "^7.0.0"
@@ -795,7 +795,7 @@ Lockfile:
   "@babel/runtime-corejs2@7.4.5":
     version "7.4.5"
     resolved "https://registry.yarnpkg.com/@babel/runtime-corejs2/-/runtime-corejs2-7.4.5.tgz#3d892f0560df21bafb384dd7727e33853e95d3c9"
-    integrity sha512-5yLuwzvIDecKwYMzJtiarky4Fb5643H3Ao5jwX0HrMR5oM5mn2iHH9wSZonxwNK0oAjAFUQAiOd4jT7/9Y2jMQ==
+    integrity sha512-5yLuwzvecKwYMzJtiarky4Fb5643H3Ao5jwX0HrMR5oM5mn2iHH9wSZonxwNK0oAjAFUQAiOd4jT7/9Y2jMQ==
     dependencies:
       core-js "^2.6.5"
       regenerator-runtime "^0.13.2"
@@ -1051,7 +1051,7 @@ Lockfile:
   ansi-colors@^3.0.0:
     version "3.2.4"
     resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
-    integrity sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
+    integrity sha512-hHUXGagefjN2iRr63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
   
   ansi-html@0.0.7:
     version "0.0.7"
@@ -1682,7 +1682,7 @@ Lockfile:
   compression@1.7.4:
     version "1.7.4"
     resolved "https://registry.yarnpkg.com/compression/-/compression-1.7.4.tgz#95523eff170ca57c29a0ca41e6fe131f41e5bb8f"
-    integrity sha512-jaSIDzP9pZVS4ZfQ+TzvtiWhdpFhE2RDHz8QJkpX9SIpLq88VueF5jJw6t+6CUQcAoA6t+x89MLrWAqpfDE8iQ==
+    integrity sha512-jaSzP9pZVS4ZfQ+TzvtiWhdpFhE2RDHz8QJkpX9SIpLq88VueF5jJw6t+6CUQcAoA6t+x89MLrWAqpfDE8iQ==
     dependencies:
       accepts "~1.3.5"
       bytes "3.0.0"
@@ -2106,7 +2106,7 @@ Lockfile:
   emojis-list@^2.0.0:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"
-    integrity sha1-TapNnbAPmBmIDHn6RXrlsJof04k=
+    integrity sha1-TapNnbAPmBmHn6RXrlsJof04k=
   
   encodeurl@~1.0.2:
     version "1.0.2"
@@ -3135,7 +3135,7 @@ Lockfile:
   md5.js@^1.3.4:
     version "1.3.5"
     resolved "https://registry.yarnpkg.com/md5.js/-/md5.js-1.3.5.tgz#b5d07b8e3216e3e27cd728d72f70d1e6a342005f"
-    integrity sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLIDG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==
+    integrity sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==
     dependencies:
       hash-base "^3.0.0"
       inherits "^2.0.1"
@@ -3370,7 +3370,7 @@ Lockfile:
   negotiator@0.6.2:
     version "0.6.2"
     resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.2.tgz#feacf7ccf525a77ae9634436a64883ffeca346fb"
-    integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4JID2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
+    integrity sha512-hZXc7K2e+PgeI1eDBe/10Ard4ekbfrrqG8Ep+8Jmf4J2bNg7NvCPOZN+kfF574pFQI7mum2AUqDidoKqcTOw==
   
   neo-async@^2.5.0, neo-async@^2.6.1:
     version "2.6.1"
@@ -3770,7 +3770,7 @@ Lockfile:
   parse-json@^2.2.0:
     version "2.2.0"
     resolved "https://registry.yarnpkg.com/parse-json/-/parse-json-2.2.0.tgz#f480f40434ef80741f8469099f8dea18f55a4dc9"
-    integrity sha1-9ID0BDTvgHQfhGkJn43qGPVaTck=
+    integrity sha1-90BDTvgHQfhGkJn43qGPVaTck=
     dependencies:
       error-ex "^1.2.0"
   
@@ -4794,7 +4794,7 @@ Lockfile:
   snapdragon@^0.8.1:
     version "0.8.2"
     resolved "https://registry.yarnpkg.com/snapdragon/-/snapdragon-0.8.2.tgz#64922e7c565b0e14204ba1aa7d6964278d25182d"
-    integrity sha512-FtyOnWN/wCHTVXOMwvSv26d+ko5vWlIDD6zoUJ7LW8vh+ZBC8QdljveRP+crNrtBwioEUWy/4dMtbBjA4ioNlg==
+    integrity sha512-FtyOnWN/wCHTVXOMwvSv26d+ko5vWlD6zoUJ7LW8vh+ZBC8QdljveRP+crNrtBwioEUWy/4dMtbBjA4ioNlg==
     dependencies:
       base "^0.11.1"
       debug "^2.2.0"
@@ -4892,7 +4892,7 @@ Lockfile:
   sprintf-js@~1.0.2:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
-    integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
+    integrity sha1-BOaSb2YolTVPPdAVYzuFcpfiw=
   
   ssri@^6.0.1:
     version "6.0.1"
@@ -5160,7 +5160,7 @@ Lockfile:
   to-regex-range@^2.1.0:
     version "2.1.1"
     resolved "https://registry.yarnpkg.com/to-regex-range/-/to-regex-range-2.1.1.tgz#7c80c17b9dfebe599e27367e0d4dd5590141db38"
-    integrity sha1-fIDBe53+vlmeJzZ+DU3VWQFB2zg=
+    integrity sha1-fBe53+vlmeJzZ+DU3VWQFB2zg=
     dependencies:
       is-number "^3.0.0"
       repeat-string "^1.6.1"
@@ -5410,7 +5410,7 @@ Lockfile:
   webpack-merge@^4.1.0:
     version "4.2.2"
     resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-4.2.2.tgz#a27c52ea783d1398afd2087f547d7b9d2f43634d"
-    integrity sha512-TUE1UGoTX2Cd42j3krGYqObZbOD+xF7u28WB7tfUordytSjbWTIjK/8V0amkBfTYN4/pB/GIDlJZZ657BGG19g==
+    integrity sha512-TUE1UGoTX2Cd42j3krGYqObZbOD+xF7u28WB7tfUordytSjbWTIjK/8V0amkBfTYN4/pB/GlJZZ657BGG19g==
     dependencies:
       lodash "^4.17.15"
   

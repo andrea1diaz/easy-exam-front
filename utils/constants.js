@@ -8,4 +8,6 @@ export const REGISTER_MODE = 'register_mode';
 
 export const UNAUTHORIZED = 401;
 
+export const LAST_LOCATION = 'last_location';
+
 export const MAX_PAGE_TOP_TO_CHANGE_TOOLBAR = 10;
