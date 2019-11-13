@@ -59,79 +59,79 @@ const SignUp = styled.div`
 `
 
 class LoginCard extends Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      mode: LOGIN_MODE,
-      email: '',
-      password: '',
-      registerields: {}
-    }
-  }
+	constructor(props) {
+		super(props);
+		this.state = {
+			mode: LOGIN_MODE,
+			email: '',
+			password: '',
+			registerields: {},
+		};
+	}
 
-  render () {
-    const {
-      isMobile, onChangeFields, onLogin,
-      onForgotPassword, goToRegister
-    } = this.props
-    const { email, password } = this.state
+	render() {
+		const {
+			isMobile, onChangeFields, onLogin,
+			onRecoveryPassword, goToRegister,
+		} = this.props;
+		const { email, password } = this.state;
 
-    return (
-      <Wrapper isMobile={isMobile}>
-        <Title>Welcome back </Title>
-        <InputWrapper>
-          <Input
-            name='email'
-            type='email'
-            value={email}
-            placeholder='email'
-            validator={v => {
-              const r = validateEmail(v)
-              this.setState(s => {
-                return { ...s, continueAvailable: r === undefined }
-              })
-              return r !== undefined
-            }}
-            onChange={async v => {
-              await this.setState(s => {
-                return { ...s, email: v }
-              })
-              onChangeFields({
-                email: { email },
-                password: { password }
-              })
-            }}
-          />
-        </InputWrapper>
-        <InputWrapper>
-          <Input
-            name='pasword'
-            type='password'
-            value={password}
-            placeholder='password'
-            validator={v => {
-              const r = validatePassword(v)
-              this.setState(s => {
-                return { ...s, continueAvailable: r === undefined }
-              })
-              return r !== undefined
-            }}
-            onChange={async v => {
-              await this.setState(s => {
-                return { ...s, password: v }
-              })
-              onChangeFields({
-                email: { email },
-                password: { password }
-              })
-            }}
-            onEnterPressed={final => {
-              if (onLogin) {
-                onLogin(final)
-              }
-            }}
-          />
-          <ForgotPassword onClick={onForgotPassword}>
+		return (
+			<Wrapper isMobile={isMobile}>
+				<Title>Welcome back </Title>
+				<InputWrapper>
+					<Input
+						name="email"
+						type="email"
+						value={email}
+						placeholder="email"
+						validator={v => {
+                    const r = validateEmail(v);
+                    this.setState(s => {
+                      return { ...s, continueAvailable: r === undefined };
+                    });
+                    return r !== undefined;
+                  }}
+						onChange={async v => {
+										await this.setState(s => {
+											return { ...s, email: v };
+										});
+										onChangeFields({
+											email: { email },
+											password: { password },
+										});
+						}}
+					/>
+				</InputWrapper>
+				<InputWrapper>
+					<Input
+						name="pasword"
+						type="password"
+						value={password}
+						placeholder="password"
+						validator={v => {
+                    const r = validatePassword(v);
+                    this.setState(s => {
+                      return { ...s, continueAvailable: r === undefined };
+                    });
+                    return r !== undefined;
+                  }}
+						onChange={async v => {
+										await this.setState(s => {
+											return { ...s, password: v };
+										});
+										onChangeFields({
+											email: { email },
+											password: { password },
+										});
+						}}
+						onEnterPressed={final => {
+							if (onLogin) {
+								onLogin(final);
+							}
+						}}
+					/>
+					<ForgotPassword onClick={onRecoveryPassword}>
 							Forgot your password?
           </ForgotPassword>
         </InputWrapper>
@@ -159,11 +159,11 @@ LoginCard.defaultProps = {
 }
 
 LoginCard.propTypes = {
-  isMobile: PropTypes.bool,
-  onChangeFields: PropTypes.func,
-  onForgotPassword: PropTypes.func,
-  onLogin: PropTypes.func,
-  goToRegister: PropTypes.func
-}
+	isMobile: PropTypes.bool,
+	onChangeFields: PropTypes.func,
+	onRecoveryPassword: PropTypes.func,
+	onLogin: PropTypes.func,
+	goToRegister: PropTypes.func,
+};
 
 export default LoginCard
