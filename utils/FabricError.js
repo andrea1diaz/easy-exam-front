@@ -1,47 +1,47 @@
-import React from 'react';
-import validate from 'validate.js';
+import React from 'react'
+import validate from 'validate.js'
 
 const getKeysOfObject = (obj) => {
-  let keys = [];
+  let keys = []
   for (let k in obj) {
-    keys.push(k);
+    keys.push(k)
   }
-  return keys;
-};
+  return keys
+}
 
 const getErrorFromError = (error) => {
   switch (typeof error) {
-    case "object":
-      // console.log("!!!");
+    default:
+      return null
+
+    case 'object':
       if (error.response) {
         if (error.response.data) {
           const title =
-            error.response.data.message || "Houston, tenemos un problema";
-          let message = (
+            error.response.data.message || 'Houston, tenemos un problema';
+					const keys = getKeysOfObject(error.response.data.errors);
+          const message = (
             <div>
-              {getKeysOfObject(error.response.data.errors).map(k => {
-                // console.log("k", k);
+              {keys.map(k => {
                 return (
                   <ul>
                     <li>{validate.capitalize(k)}</li>
                     <ul>
-                      {error.response.data.errors[k].map(i => {
-                        return <li>{i}</li>;
-                      })}
+                      {keys}
                     </ul>
                   </ul>
-                );
+                )
               })}
             </div>
-          );
-          return { title: title, message: message };
+          )
+          return { title: title, message: message }
           // const message = error.response.data.errors;
         }
       } // TODO: Make more cases
-      break;
-    case "string":
-      return { title: "Ocurrio un error", message: error };
+      break
+    case 'string':
+      return { title: 'Ocurrio un error', message: error }
   }
-};
+}
 
-export default getErrorFromError;
+export default getErrorFromError

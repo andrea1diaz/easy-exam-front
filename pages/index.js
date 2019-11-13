@@ -8,6 +8,7 @@ import { Subscribe } from 'unstated';
 import LoadingBasicLayout from '../components/atoms/LoadingBasicLayout';
 import AuthContainer from '../containers/authContainer';
 import Dashboard from '../components/organisms/Dashboard';
+import getErrorFromError from '../utils/FabricError';
 
 
 /*
@@ -20,7 +21,7 @@ const BasicLayout = dynamic(
 );
 
 
-const LogIn = dynamic(() => import('../components/organisms/LogIn'), {
+const LogIn = dynamic(() => import('../components/organisms/Auth'), {
   ssr: false,
   loading: () => null,
 });

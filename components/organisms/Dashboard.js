@@ -45,9 +45,7 @@ class Dashboard extends Component {
 					>
 						Recent Exams
 					</div>
-					<ExamPreview/>
-					<ExamPreview/>
-					<ExamPreview/>
+					<ExamPreview img = "../../static/img/user-profile.svg" name="Exam 1" date="Today"/>
 				</Section>
 
 				<Section

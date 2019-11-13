@@ -74,7 +74,7 @@ class LoginCard extends Component {
 
 	render() {
 		const {
-			isMobile, onChangeFields, onLogIn,
+			isMobile, onChangeFields, onLogin,
 			onForgotPassword, goToRegister,
 		} = this.props;
 		const { email, password } = this.state;
@@ -129,8 +129,8 @@ class LoginCard extends Component {
 										});
 						}}
 						onEnterPressed={final => {
-							if (onLogIn) {
-								onLogIn(final);
+							if (onLogin) {
+								onLogin(final);
 							}
 						}}
 					/>
@@ -140,7 +140,7 @@ class LoginCard extends Component {
 				</InputWrapper>
 				<ButtonWrapper>
 					<Button
-						onClick={onLogIn}
+						onClick={onLogin}
 						color="#FD7576"
 						fontColor="#FFFFFF"
 					>
@@ -165,7 +165,7 @@ LoginCard.propTypes = {
 	isMobile: PropTypes.bool,
 	onChangeFields: PropTypes.func,
 	onForgotPassword: PropTypes.func,
-	onLogIn: PropTypes.func,
+	onLogin: PropTypes.func,
 	goToRegister: PropTypes.func,
 };
 

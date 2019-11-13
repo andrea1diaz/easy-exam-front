@@ -148,7 +148,7 @@ class Input extends React.Component {
         };
       });
     }
-    let returnedValue = text;
+    let returnedValue = this.state.text;
     if (parser) {
       returnedValue = parser(returnedValue);
     }
@@ -156,13 +156,10 @@ class Input extends React.Component {
   };
 
   onKeyPress = (e) => {
-		const { onEnterPressed } = this.props;
-		const { text } = this.state;
-
-    if (e.key === 'Enter') {
-      onEnterPressed(text);
+  if (e.key === 'Enter') {
+      this.props.onEnterPressed(this.state.text);
     }
-  };
+	};
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.errorMessage !== prevState.errorMessage) {
