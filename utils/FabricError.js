@@ -2,7 +2,7 @@ import React from 'react';
 import validate from 'validate.js';
 
 const getKeysOfObject = (obj) => {
-  let keys = [];
+  const keys = [];
   for (let k in obj) {
     keys.push(k);
   }
@@ -14,23 +14,20 @@ const getErrorFromError = (error) => {
 		default:
 			return null;
 
-    case "object":
-      // console.log("!!!");
+    case 'object':
       if (error.response) {
         if (error.response.data) {
           const title =
-            error.response.data.message || "Houston, tenemos un problema";
-          let message = (
+            error.response.data.message || 'Houston, tenemos un problema';
+					const keys = getKeysOfObject(error.response.data.errors);
+          const message = (
             <div>
-              {getKeysOfObject(error.response.data.errors).map(k => {
-                // console.log("k", k);
+              {keys.map(k => {
                 return (
                   <ul>
                     <li>{validate.capitalize(k)}</li>
                     <ul>
-                      {error.response.data.errors[k].map(i => {
-                        return <li>{i}</li>;
-                      })}
+                      {keys}
                     </ul>
                   </ul>
                 );
