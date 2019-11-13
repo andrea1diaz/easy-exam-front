@@ -82,10 +82,10 @@ class Auth extends Component {
 
 	register = async () => {
 		const data = {
-			firstName: this.state.firstName.trim(),
-			lastName: this.state.lastName.trim(),
+      name: this.state.firstName.trim(),
 			email: this.state.emailR.trim().toLowerCase(),
-			password: this.state.passwordR,
+      password: this.state.passwordR,
+      role: ["ROLE_STUDENT"]
 		};
     console.log("Enter register")
     console.log(data)

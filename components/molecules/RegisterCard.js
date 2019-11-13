@@ -11,7 +11,6 @@ import {
 	validateEmail,
 	validatePassword,
 	validateFirstName,
-	validateLastName,
 } from '../../validators';
 
 const Wrapper = styled.div`
@@ -64,7 +63,6 @@ class RegisterCard extends Component {
 		this.state = {
 			mode: REGISTER_MODE,
 			firstName: '',
-			lastName: '',
 			email: '',
 			password: '',
 			inputsValidated: [false, false, false, false, false],
@@ -96,7 +94,6 @@ class RegisterCard extends Component {
 		const {
 			inputsValidated,
 			firstName,
-			lastName,
 			email,
 			password,
 			} = this.state;
@@ -125,40 +122,11 @@ class RegisterCard extends Component {
                     });
                     onChangeFields({
                       firstName,
-                      lastName,
                       email,
                       password,
                     });
                   }}
 					/>
-				</InputWrapper>
-				<InputWrapper>
-					<Input
-						name="lastName"
-						type="text"
-						value={lastName}
-						placeholder="last name"
-						validator={v => {
-                    const r = validateLastName(v);
-                    let auxInputsValidated = this.state.inputsValidated;
-                    auxInputsValidated[2] = r === undefined;
-                    this.setState(s => {
-                      return { ...s, inputsValidated: auxInputsValidated };
-                    });
-                    return r !== undefined;
-                  }}
-						onChange={v => {
-                    this.setState(s => {
-                      return { ...s, lastName: v };
-                    });
-                    onChangeFields({
-                      firstName: this.state.firstName,
-                      lastName: this.state.lastName,
-                      email: this.state.email,
-                      password: this.state.password
-                    });
-                  }}
-					/>			
 				</InputWrapper>
 				<InputWrapper>
 					<Input
@@ -172,7 +140,6 @@ class RegisterCard extends Component {
 							});
 							this.props.onChangeFields({
 								firstName: this.state.firstName,
-								lastName: this.state.lastName,
 								email: this.state.email,
 								password: this.state.password
 							});
@@ -200,7 +167,6 @@ class RegisterCard extends Component {
 							});
 							this.props.onChangeFields({
 								firstName: this.state.firstName,
-								lastName: this.state.lastName,
 								email: this.state.email,
 								password: this.state.password
 							});
