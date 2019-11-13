@@ -189,7 +189,7 @@ class RegisterCard extends Component {
 				</InputWrapper>
 				<ButtonWrapper>
 					<Button
-						onClick={this.handleRegister}
+						onClick={this.props.onRegister}
 						color="#FEC85D"
 						fontColor="#FFFFFF"
 						style={{ padding: '18px 36%' }}
