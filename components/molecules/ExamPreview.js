@@ -179,6 +179,7 @@ const Title = styled.p`
 const EditTime = styled.p`
   margin: 0;
 	font-size: 8px;
+  font-weight: normal;
 `
 
 const Text = styled.div`
