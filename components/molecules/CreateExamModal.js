@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
+import CloseIcon from '../atoms/CloseIcon';
 
 const Title = styled.div`
 	font-size: 25px;
@@ -108,6 +109,7 @@ class CreateExamModal extends Component {
               <div>
                 <Title>Create new exam</Title>
               </div>
+              <CloseIcon color='#23246E' size='22' viewBox='0 0 512 512' />
               <Line/>
           </div>
           <Body>
