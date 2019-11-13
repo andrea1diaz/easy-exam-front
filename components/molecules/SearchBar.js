@@ -32,8 +32,7 @@ class SearchBar extends Component {
 
 	render() {
 		const {
-			isMobile, onChangeFields, onLogIn,
-			onForgotPassword, onSignUp,
+			isMobile, onChangeFields, onSearch
 		} = this.props;
 		const { searchValue } = this.state;
 
@@ -41,40 +40,42 @@ class SearchBar extends Component {
 			<Wrapper isMobile={isMobile}>
 				<SearchBarWrapper>
 					<div
-						onClick={onLogIn}
+						onClick={onSearch}
 						color="#FD7576"
 						fontColor="#FFFFFF"
 						css= {css`position: absolute; top: 20px; left: 20px;`}
 					>
-						<SearchIcon size="22" viewBox='0 0 64 64' />
+						<SearchIcon size='22' viewBox='0 0 64 64' />
 					</div>
-					<Input
-						name="searchBar"
-						type="text"
-						value={searchValue}
-						placeholder="search..."
-						css= {css`position: absolute; width: 50%; top: 20px; left: 50px;`}
-						onChange={async v => {
-										await this.setState(s => {
-											return { ...s, searchValue: v };
-										});
-										onChangeFields({
-											searchValue: { searchValue },
-										});
-						}}
-					/>
+					<div
+						css= {css`position: absolute; width: 80%; left: 50px;`}
+					>	
+						<Input
+							name="searchBar"
+							type="text"
+							value={searchValue}
+							placeholder="search..."
+							onChange={async v => {
+											await this.setState(s => {
+												return { ...s, searchValue: v };
+											});
+											onChangeFields({
+												searchValue: { searchValue },
+											});
+							}}
+						/>
+					</div>
 					<div
 						color="#FD7576"
 						fontColor="#FFFFFF"
 						css= {css`position: absolute; top: 10px; right: 10px; font-size: 15px`}
 					>
 						<div
-							onClick={onLogIn}
 							color="#FD7576"
 							fontColor="#FFFFFF"
 							css= {css`position: absolute; top: 10px; right: 170px`}
 						>
-							<BellIcon size="22" viewBox='0 0 512 512' />
+							<BellIcon size='22' viewBox='0 0 512 512' />
 						</div>
 						<div
 							css= {css`height: 40px; border-left: 1px solid #CCC; position: absolute; right: 150px`}
@@ -85,7 +86,7 @@ class SearchBar extends Component {
 							Name
 						</span>
 						<img src="static/img/user-profile.svg" 
-							css= {css`display: inline-block; width: 35px; position: absolute; right: 5px; border: solid #000; border-radius: 100%`}
+							css= {css`display: inline-block; width: 35px; position: absolute; right: 5px; border: solid #67B5D6; border-radius: 100%`}
 						/>
 					</div>
 				</SearchBarWrapper>
@@ -96,15 +97,14 @@ class SearchBar extends Component {
 
 SearchBar.defaultProps = {
 	onChangeFields: () => {},
+	onSearch: () => {},
 	isMobile: false,
 };
 
 SearchBar.propTypes = {
 	isMobile: PropTypes.bool,
 	onChangeFields: PropTypes.func,
-	onForgotPassword: PropTypes.func,
-	onLogIn: PropTypes.func,
-	onSignUp: PropTypes.func,
+	onSearch: PropTypes.func,
 };
 
 export default SearchBar;
