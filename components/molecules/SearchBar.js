@@ -55,6 +55,7 @@ class SearchBar extends Component {
 							type="text"
 							value={searchValue}
 							placeholder="search..."
+							style={{border: 0}}
 							onChange={async v => {
 											await this.setState(s => {
 												return { ...s, searchValue: v };
