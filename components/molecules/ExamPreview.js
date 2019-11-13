@@ -84,30 +84,12 @@ const IconPoints = styled.img`
 class ExamPreview extends Component {
   constructor (props) {
     super(props)
-    this.name = {
-      name: 'very very very long exam name.exam'
-    }
-    this.date = {
-      date: 'today'
-    }
   }
   render () {
-    const {
-      isMobile
-    } = this.props
-
-    const {
-      name
-    } = this.name
-
-    const {
-      date
-    } = this.date
-
     return (
-      <Wrapper isMobile={isMobile} >
+      <Wrapper isMobile={this.props.isMobile} >
         <Header>
-          <FilePreview src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH6ET6NSRLnGaWpWhAmWvlwEJJmZ-Jz8jPvddx-cq5cUyboaM&s' />
+          <FilePreview src={this.props.img} />
         </Header>
         <Footer>
           <FileIcon color='#4C87D2' style={{
@@ -117,8 +99,8 @@ class ExamPreview extends Component {
             display: 'block'
           }} viewBox='0 0 21.527 27.399' />
           <Text>
-            <Title>{name}</Title>
-            <EditTime> Edited {date} </EditTime>
+            <Title>{this.props.name}</Title>
+            <EditTime> Edited {this.props.date} </EditTime>
           </Text>
           <VerticalDots viewBox='0 0 6 26' style={{
             width: '4',
