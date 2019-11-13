@@ -47,7 +47,7 @@ class Auth extends Component {
 	}
 
 	logIn = async () => {
-		const data = { login: this.state.email.email, password: this.state.password.password };
+    const data = {email: this.state.email.email, password: this.state.password.password};
 		console.log('On login function');
 		console.log(data);
 
@@ -87,6 +87,8 @@ class Auth extends Component {
 			email: this.state.emailR.trim().toLowerCase(),
 			password: this.state.passwordR,
 		};
+    console.log("Enter register")
+    console.log(data)
 
 		try {
 			const r = await fastRegister(data);
