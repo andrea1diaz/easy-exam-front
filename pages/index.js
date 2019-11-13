@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// import { Redirect } from 'react-router-dom';
 import styled from '@emotion/styled';
 import MediaQuery from 'react-responsive';
 import dynamic from 'next/dynamic';
@@ -25,7 +26,7 @@ const LogIn = dynamic(() => import('../components/organisms/Auth'), {
 
 
 const Main = styled.div`
-  ${props => {
+  ${(props) => {
     if (props.activePop) {
       return css`
         width: 100%;
@@ -74,23 +75,20 @@ class Index extends Component {
   }
 
   loading = async () => {
-    this.setState(s => {
-      return {
+    this.setState((s) => ({
         ...s,
         loading: false,
-      };
-    });
+      }));
   };
 
 	render() {
 		return (
 			<Subscribe to={[AuthContainer]}>
-			{authState => {
+			{(authState) => {
           this.authState = authState;
           return (
             <MediaQuery maxWidth={720}>
-              {isMobile => {
-                return (
+              {(isMobile) => (
                   <div>
                     <LogIn
                       isMobile={isMobile}
@@ -98,22 +96,17 @@ class Index extends Component {
                       loading={this.state.loadingPopUpLogin}
                       opened={this.state.loginOpened}
                       onCancel={() => {
-                        this.setState(s => {
-                          return { ...s, loginOpened: false, activePop: false };
-                        });
+                        this.setState((s) => ({ ...s, loginOpened: false, activePop: false }));
                       }}
                       onLoginSuccess={async () => {
-                        this.setState(s => {
-                          return { ...s, loadingPopUpLogin: true };
-                        });
-                        this.setState(s => {
-                          return {
+                        this.setState((s) => ({ ...s, loadingPopUpLogin: true }));
+                        this.setState((s) => ({
                             ...s,
                             loginOpened: false,
                             activePop: false,
-                            loadingPopUpLogin: false
-                          };
-                        });
+                            loadingPopUpLogin: false,
+                          }));
+						// this.props.history.push('/dashboard');
                       }}
                     />
                     <Main activePop={this.state.activePop}>
@@ -127,11 +120,9 @@ class Index extends Component {
                           title="Home"
                           userData={authState.getUserData()}
                           onLogout={() => {
-                            this.setState(s => {
-                              return {
+                            this.setState((s) => ({
                                 ...s,
-                              };
-                            });
+                              }));
                           }}
                         >
 												<div>
@@ -141,18 +132,17 @@ class Index extends Component {
                       )}
                     </Main>
                   </div>
-                );
-              }}
+                )}
             </MediaQuery>
           );
         }}
 			</Subscribe>
-		)
+		);
 	}
 }
 
 Index.propTypes = {
-  name: PropTypes.number
+  name: PropTypes.number,
 };
 
 export default Index;

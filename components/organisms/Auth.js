@@ -20,7 +20,7 @@ import {
 } from '../../endpoints';
 
 const Wrapper = styled.div`
-	display: ${props => (props.opened ? 'block' : 'none')};
+	display: ${(props) => (props.opened ? 'block' : 'none')};
 	@media (max-width: 1200px) {
 			color: white;
 	}
@@ -49,11 +49,9 @@ class Auth extends Component {
 	}
 
 	toogleLoading = () => {
-    this.setState(s => {
-      return {
-        loading: !s.loading
-      };
-    });
+    this.setState((s) => ({
+        loading: !s.loading,
+      }));
   };
 
 	logIn = async () => {
@@ -65,40 +63,39 @@ class Auth extends Component {
 			const resp = await loginRequest(data);
 			console.log(resp.data.data);
 
-			await this.authState.logIn (
+			await this.authState.logIn(
 				resp.data.data.user,
 				resp.data.data.token.value,
 			);
 
-			this.props.onLoginSuccess ({
+			this.props.onLoginSuccess({
 				userData: resp.data.data.user,
-				token: resp.data.dara.token.value,
+				token: resp.data.data.token.value,
 			});
 		} catch (e) {
 			const err = getErrorFromError(e);
-			this.setState(s => {
-				return {
+			this.setState((s) => ({
 					...s,
-					haveError: true,
+					haveError: false,
 					error: err,
-				};
-			});
+				}));
 
 			if (this.props.onLoginFailed) {
-				this.props.onLoginFailed (e);
+				this.props.onLoginFailed(e);
 			}
 		} finally {}
 	};
 
 	register = async () => {
 		const data = {
-      name: this.state.firstName.trim(),
-			email: this.state.emailR.trim().toLowerCase(),
+      firstName: this.state.firstName.trim(),
+      lastName: this.state.lastName.trim(),
+	  email: this.state.emailR.trim().toLowerCase(),
       password: this.state.passwordR,
-      role: ["ROLE_STUDENT"]
+      role: ['ROLE_STUDENT'],
 		};
-    console.log("Enter register")
-    console.log(data)
+    console.log('Enter register');
+    console.log(data);
 
 		try {
 			const r = await fastRegister(data);
@@ -106,30 +103,28 @@ class Auth extends Component {
 
 			await this.authState.logIn(r.data.data.user, r.data.data.token.value);
 
-			this.props.onLoginSuccess ({
+			this.props.onLoginSuccess({
 				userData: r.data.data.user,
 				token: r.data.data.token.value,
 			});
 		} catch (e) {
-			const err = getErrorFromError (e);
-			this.setState (s => {
-				return {
+			const err = getErrorFromError(e);
+			this.setState((s) => ({
 					...s,
-					haveError: true,
+					haveError: false,
 					error: err,
-				};
-			});
+				}));
 
 			console.log(err);
-			
+
 			if (this.props.onLoginFailed) {
-				this.props.onLoginFailed (e);
+				this.props.onLoginFailed(e);
 			}
 		} finally {}
 	};
 
 	handleRecoverAccount = () => {
-		this.setState ({
+		this.setState({
 			currentStepExists: RECOVERY_ACCOUNT,
 		});
 	};
@@ -143,51 +138,43 @@ class Auth extends Component {
 				return (
 					<RecoveryPasswordDialog
 						isMobile={this.props.isMobile}
-						active={true}
+						active
 						onCancel={() => {
-              this.setState(s => {
-                return { ...s, currentStepExists: '' };
-              });
+              this.setState((s) => ({ ...s, currentStepExists: '' }));
             }}
-            onAccept={async email => {
+            onAccept={async (email) => {
               this.toogleLoading();
               try {
                 await recoveryPassword(email);
               } catch (e) {
                 const err = getErrorFromError(e);
-                this.setState(s => {
-                  return {
+                this.setState((s) => ({
                     ...s,
-                    haveError: true,
-                    error: err
-                  };
-                });
+                    haveError: false,
+                    error: err,
+                  }));
                 console.log(err);
               } finally {
-                this.setState(s => {
-                  return {
+                this.setState((s) => ({
                     ...s,
                     loading: false,
                     currentStepExists: '',
-                  };
-                });
+                  }));
               }
             }}
-          />
+					/>
         );
 
       case MESSAGE_SUCCESSFULSPAM:
         return (
           <SuccessfulSpam
             isMobile={this.props.isMobile}
-            active={true}
-            title={"Revisa tu correo"}
-            message={
-              "Te hemos enviado un correo para que puedas recuperar tu contraseña."
-            }
+            active
+            title="Revisa tu correo"
+            message="Te hemos enviado un correo para que puedas recuperar tu contraseña."
             onAccept={() => {
               this.setState({
-                currentStepExists: ""
+                currentStepExists: '',
               });
             }}
           />
@@ -212,9 +199,7 @@ class Auth extends Component {
 								isMobile={this.props.isMobile}
 								active={this.state.haveError}
 								onAccept={() => {
-									this.setState(s => {
-										return { ...s, haveError: false };
-									});
+									this.setState((s) => ({ ...s, haveError: false }));
 								}}
 								title={
 									this.state.error
@@ -232,66 +217,52 @@ class Auth extends Component {
 								active={this.state.recoveryPasswordDialogActive}
 								onCancel={() => {
 									console.log('ON CANCEL');
-									this.setState (s => {
-										return { ...s, recoveryPasswordDialogActive: false };
-									});
+									this.setState((s) => ({ ...s, recoveryPasswordDialogActive: false }));
 								}}
-								onAccept={async email => {
-                  this.setState(s => {
-                    return { ...s, loading: true };
-                  });
+								onAccept={async (email) => {
+                  this.setState((s) => ({ ...s, loading: true }));
                   try {
                     await recoveryPassword(email);
                   } catch (e) {
                     const err = getErrorFromError(e);
-                    this.setState(s => {
-                      return {
+                    this.setState((s) => ({
                         ...s,
-                        haveError: true,
-                        error: err
-                      };
-                    });
+                        haveError: false,
+                        error: err,
+                      }));
                     console.log(err);
                   } finally {
-                    this.setState(s => {
-                      return {
+                    this.setState((s) => ({
                         ...s,
                         loading: false,
                         recoveryPasswordDialogActive: false,
-                        currentStepExists: MESSAGE_SUCCESSFULSPAM
-                      };
-                    });
+                        currentStepExists: MESSAGE_SUCCESSFULSPAM,
+                      }));
                   }
                 }}
-              />
+							/>
 						{this.state.activeLoginView ? (
 							<div>
 								<WaveOne />
                 <LoginCard
                   isMobile={this.props.isMobile}
-                  onChangeFields={fields => {
-                    this.setState(s => {
-                      return {
+                  onChangeFields={(fields) => {
+                    this.setState((s) => ({
                         ...s,
                         email: fields.email,
-                        password: fields.password
-                      };
-                    });
+                        password: fields.password,
+                      }));
                   }}
                   onLogin={this.logIn}
                   goToRegister={() => {
-                    this.setState(s => {
-                      return { ...s, activeLoginView: false };
-                    });
+                    this.setState((s) => ({ ...s, activeLoginView: false }));
                   }}
                   onCancel={this.props.onCancel}
                   onRecoveryPassword={() => {
-                    this.setState(s => {
-                      return {
+                    this.setState((s) => ({
                         ...s,
-                        recoveryPasswordDialogActive: true
-                      };
-                    });
+                        recoveryPasswordDialogActive: true,
+                      }));
                   }}
                 />
 							</div>
@@ -299,33 +270,29 @@ class Auth extends Component {
 								<div>
 								<WaveTwo />
                 <RegisterCard
-                  onChangeFields={fields => {
-                    this.setState(s => {
-                      return {
+                  onChangeFields={(fields) => {
+                    this.setState((s) => ({
                         ...s,
                         firstName: fields.firstName,
                         lastName: fields.lastName,
                         emailR: fields.email,
-                        passwordR: fields.password
-                      };
-                    });
+                        passwordR: fields.password,
+                      }));
                   }}
                   onRegister={this.register}
                   goToLogin={() => {
-                    this.setState(s => {
-                      return { ...s, activeLoginView: true };
-                    });
+                    this.setState((s) => ({ ...s, activeLoginView: true }));
                   }}
                   onCancel={this.props.onCancel}
-                  />
+                />
 								</div>
               )}
 
               {this.getCurrentViewUser()}
-            </Wrapper>
+      </Wrapper>
           );
         }}
-      </Subscribe>
+   </Subscribe>
     );
   }
 }

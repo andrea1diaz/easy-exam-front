@@ -63,6 +63,7 @@ class RegisterCard extends Component {
 		this.state = {
 			mode: REGISTER_MODE,
 			firstName: '',
+			lastName: '',
 			email: '',
 			password: '',
 			inputsValidated: [false, false, false, false, false],
@@ -76,11 +77,9 @@ class RegisterCard extends Component {
 		const { onRegister } = this.props;
 
 		const auxContinueAvailable = inputsValidated.reduce(
-			(prev, cur) => {
-				return prev && cur;
-			},
+			(prev, cur) => prev && cur,
 		);
-		console.log("entraa", auxContinueAvailable);
+		console.log('entraa', auxContinueAvailable);
 		if (auxContinueAvailable) {
 			onRegister();
 		}
@@ -94,6 +93,7 @@ class RegisterCard extends Component {
 		const {
 			inputsValidated,
 			firstName,
+			lastName,
 			email,
 			password,
 			} = this.state;
@@ -105,23 +105,44 @@ class RegisterCard extends Component {
 					<Input
 						name="firstName"
 						type="text"
-						value={firstName}
-						placeholder="name"
-						validator={v => {
+						value={this.state.firstName}
+						placeholder="First Name"
+						validator={(v) => {
                     const r = validateFirstName(v);
                     const auxInputsValidated = inputsValidated;
                     auxInputsValidated[1] = r === undefined;
-                    this.setState(s => {
-                      return { ...s, inputsValidated: auxInputsValidated };
-                    });
+                    this.setState((s) => ({ ...s, inputsValidated: auxInputsValidated }));
                     return r !== undefined;
                   }}
-						onChange={async v => {
-                    await this.setState(s => {
-                      return { ...s, firstName: v };
-                    });
+						onChange={async (v) => {
+                    await this.setState((s) => ({ ...s, firstName: v }));
                     onChangeFields({
                       firstName,
+					  lastName,
+                      email,
+                      password,
+                    });
+                  }}
+					/>
+				</InputWrapper>
+				<InputWrapper>
+					<Input
+						name="lastName"
+						type="text"
+						value={this.state.lastName}
+						placeholder="Last Name"
+						validator={(v) => {
+                    const r = validateFirstName(v);
+                    const auxInputsValidated = inputsValidated;
+                    auxInputsValidated[1] = r === undefined;
+                    this.setState((s) => ({ ...s, inputsValidated: auxInputsValidated }));
+                    return r !== undefined;
+                  }}
+						onChange={async (v) => {
+                    await this.setState((s) => ({ ...s, lastName: v }));
+                    onChangeFields({
+                      firstName,
+					  lastName,
                       email,
                       password,
                     });
@@ -134,23 +155,20 @@ class RegisterCard extends Component {
 						type="email"
 						value={this.state.email}
 						placeholder="email"
-						onChange={async v => {
-							await this.setState(s => {
-								return { ...s, email: v };
-							});
+						onChange={async (v) => {
+							await this.setState((s) => ({ ...s, email: v }));
 							this.props.onChangeFields({
 								firstName: this.state.firstName,
+								lastName: this.state.lastName,
 								email: this.state.email,
-								password: this.state.password
+								password: this.state.password,
 							});
 						}}
-						validator={v => {
+						validator={(v) => {
 							const r = validateEmail(v);
-							let auxInputsValidated = this.state.inputsValidated;
+							const auxInputsValidated = this.state.inputsValidated;
 							auxInputsValidated[3] = r === undefined;
-							this.setState(s => {
-								return { ...s, inputsValidated: auxInputsValidated };
-							});
+							this.setState((s) => ({ ...s, inputsValidated: auxInputsValidated }));
 							return r !== undefined;
 						}}
 					/>
@@ -161,26 +179,23 @@ class RegisterCard extends Component {
 						name="password"
 						placeholder="password"
 						value={this.state.password}
-						onChange={v => {
-							this.setState(s => {
-								return { ...s, password: v };
-							});
+						onChange={(v) => {
+							this.setState((s) => ({ ...s, password: v }));
 							this.props.onChangeFields({
 								firstName: this.state.firstName,
+								lastName: this.state.lastName,
 								email: this.state.email,
-								password: this.state.password
+								password: this.state.password,
 							});
 						}}
-						validator={v => {
+						validator={(v) => {
 							const r = validatePassword(v);
-							let auxInputsValidated = this.state.inputsValidated;
+							const auxInputsValidated = this.state.inputsValidated;
 							auxInputsValidated[4] = r === undefined;
-							this.setState(s => {
-								return { ...s, inputsValidated: auxInputsValidated };
-							});
+							this.setState((s) => ({ ...s, inputsValidated: auxInputsValidated }));
 							return r !== undefined;
 						}}
-						onEnterPressed={final => {
+						onEnterPressed={(final) => {
 							if (this.props.onRegister) {
 								this.props.onRegister(final);
 							}
@@ -198,23 +213,23 @@ class RegisterCard extends Component {
 					</Button>
 					<LogIn onClick={this.props.goToLogin}>
 						Already have an account?
-						<span style={{color:'#FEC85D'}}> Log In </span>
+						<span style={{ color: '#FEC85D' }}> Log In </span>
 					</LogIn>
 				</ButtonWrapper>
 			</Wrapper>
-		)
+		);
 	}
 }
 
 RegisterCard.defaultProps = {
 	onChangeFields: () => {},
-}
+};
 
 RegisterCard.propTypes = {
 	isMobile: PropTypes.bool,
 	onChangeFields: PropTypes.func,
 	onRegister: PropTypes.func,
 	goToLogin: PropTypes.func,
-}
+};
 
 export default RegisterCard;
