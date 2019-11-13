@@ -1,41 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import MediaQuery from 'react-responsive';
-import dynamic from 'next/dynamic';
+import Router from 'next/router';
 import { Subscribe } from 'unstated';
 
-import LoadingBasicLayout from '../components/atoms/LoadingBasicLayout';
-import AuthContainer from '../containers/authContainer';
-
-const BasicLayout = dynamic(
-  () => import('../components/templates/BasicLayout'),
-  {
-    ssr: false,
-    loading: () => <LoadingBasicLayout />,
-  },
-);
-
-
-const LogIn = dynamic(() => import('../components/organisms/LogIn'), {
-  ssr: false,
-  loading: () => null,
-});
-
-
-const Main = styled.div`
-  ${props => {
-    if (props.activePop) {
-      return css`
-        width: 100%;
-        overflow-y: hidden;
-        height: 100%;
-        position: fixed;
-      `;
-    }
-  }};
-`;
-
+import AuthContainer from '../containers/authContainer'
+import LogIn from './LogIn';
+import SearchBar from '../components/molecules/SearchBar';
 
 class Index extends Component {
 		static async getInitialProps({ pathname }) {
@@ -143,12 +114,10 @@ class Index extends Component {
           );
         }}
 			</Subscribe>
+			*/
+			<SearchBar />
 		)
 	}
 }
-
-Index.propTypes = {
-  name: PropTypes.number
-};
 
 export default Index;
